@@ -1,0 +1,8 @@
+.grid1 {
+	background: lightgray;
+	border: 1px solid black;
+	height: 100%;
+}
+body {
+	font-family: 'Ubuntu', sans-serif;
+}
