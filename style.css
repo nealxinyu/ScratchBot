@@ -6,3 +6,9 @@
 body {
 	font-family: 'Ubuntu', sans-serif;
 }
+.blocks {
+    height:300px;
+}
+.blocks_chosen {
+    height:300px;
+}
