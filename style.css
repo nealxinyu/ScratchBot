@@ -6,9 +6,9 @@
 body {
 	font-family: 'Ubuntu', sans-serif;
 }
-.blocks {
+.toolbox {
     height:300px;
 }
-.blocks_chosen {
+.workspace {
     height:300px;
 }

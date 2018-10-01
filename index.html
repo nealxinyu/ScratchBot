@@ -7,17 +7,30 @@
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<!--Author: Yifan He-->
+  	<script src="blockly_compressed.js"></script>
+  	<script src="blocks_compressed.js"></script>
+  	<script src="msg/js/en.js"></script>
+  	<script>
+  		window.onload = function() {
+  			var workspace = Blockly.inject('blocklyDiv',{
+  				media:'media/',
+  				toolbox:document.getElementById('toolbox')
+  			});
+  		}
+  	</script>
+
+
 <body>
 
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand">ScratchBot</a>
+				<a href="index.html" class="navbar-brand">ScratchBot</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="index.html">Home</a></li>
 				<li><a href="about.html">About</a></li>
-				<li><a href="#">Help</a></li>
+				<li><a href="help.html">Help</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="login.html">Login</a></li>
@@ -39,15 +52,16 @@
 			</div>
 		</header>
 	</div> -->
+
+	<xml id="toolbox" style="display:none">
+		<block type="controls_if"></block>
+		<block type="logic_compare"></block>
+		<block type="math_number"></block>
+		<block type="math_arithmetic"></block>
+	</xml>
+
 	<div class="container">
-		<div class="row text-center flex-wrap">
-			<div class = "col-md-3 col-sm-3 grid1 blocks">
-				Blocks
-			</div>
-			<div class = "col-md-9 col-sm-9 grid1 blocks_chosen">
-				Blocks_chosen
-			</div>
-		</div>
+		<div id="blocklyDiv" style="height:400px;width:100%;"></div>
 	</div>
 </body>
 </html>
