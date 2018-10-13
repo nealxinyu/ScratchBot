@@ -9,6 +9,15 @@ app.get("/",function(req,res) {
 app.get("/login", function(req, res) {
 	res.render("login.ejs");
 });
+app.get("/register", function(req, res) {
+	res.render("register.ejs");
+});
+app.get("/help", function(req, res) {
+	res.render("help.ejs");
+});
+app.get("/about", function(req, res) {
+	res.render("about.ejs");
+});
 
 
 
