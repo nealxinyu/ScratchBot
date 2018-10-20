@@ -1,5 +1,10 @@
 <?php include 'header.php';?>
 
+<script src="blockly/blockly_compressed.js"></script>
+<script src="blockly/blocks_compressed.js"></script>
+<script src="blockly/msg/js/en.js"></script>
+<script src="blockly/javascript_compressed.js"></script>
+
 <div class="container">
 	<div id="blocklyDiv" style="height:400px;width:100%;"></div>
 	<p>
@@ -15,31 +20,31 @@
 
 </div>
 
-<!-- <?php
-$server = "";
-$username = "scratchbot";
-$password = "qaz123wsx";
-$dbname = "scratchbot";
+<?php
+// $server = "";
+// $username = "scratchbot";
+// $password = "qaz123wsx";
+// $dbname = "scratchbot";
 
-// Create connection
-$conn = new mysqli($server, $username, $password, $dbname);
+// // Create connection
+// $conn = new mysqli($server, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// // Check connection
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
 
-$sql = "INSERT INTO blocks
-VALUES ('1', 'Doe', '23')";
+// $sql = "INSERT INTO blocks
+// VALUES ('1', 'Doe', '23')";
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+// if ($conn->query($sql) === TRUE) {
+//     echo "New record created successfully";
+// } else {
+//     echo "Error: " . $sql . "<br>" . $conn->error;
+// }
 
-$conn->close();
-?> -->
+// $conn->close();
+?>
 
 <?php include 'define_blocks.php';?>
 

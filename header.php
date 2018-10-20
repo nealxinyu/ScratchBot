@@ -6,11 +6,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<!--Author: Yifan He-->
-  	<script src="blockly/blockly_compressed.js"></script>
-  	<script src="blockly/blocks_compressed.js"></script>
-  	<script src="blockly/msg/js/en.js"></script>
-  	<script src="blockly/javascript_compressed.js"></script>
 </head>
 <body>
 
