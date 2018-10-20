@@ -7,54 +7,44 @@
 		<button onclick="runCode()">Run JavaScript</button>
 		</p>
 	<p id="codeViewer"></p>
+  Input:<br>
+  <input type="text" name="userInput" id="user_input"><br>
+  <button onclick="sendMessage()">Send</button>
+
+  <button onclick="saveXml()">Save</button>
+
 </div>
 
-	<xml id="toolbox" style="display:none">
-	<block type="controls_if"></block>
-	<block type="logic_compare"></block>
-	<block type="math_number"></block>
-	<block type="math_arithmetic"></block>
-</xml>
+<!-- <?php
+$server = "";
+$username = "scratchbot";
+$password = "qaz123wsx";
+$dbname = "scratchbot";
 
-<xml id="startBlocks" style="display: none">
-<block type="controls_if" inline="false" x="20" y="20">
-  <mutation else="1"></mutation>
-  <value name="IF0">
-    <block type="logic_compare" inline="true">
-      <field name="OP">EQ</field>
-      <value name="A">
-        <block type="math_number">
-          <field name="NUM">42</field>
-        </block>
-      </value>
-      <value name="B">
-        <block type="math_number">
-          <field name="NUM">42</field>
-        </block>
-      </value>
-    </block>
-  </value>
-  <statement name="DO0">
-    <block type="text_print" inline="false">
-      <value name="TEXT">
-        <block type="text">
-          <field name="TEXT">Don't panic</field>
-        </block>
-      </value>
-    </block>
-  </statement>
-  <statement name="ELSE">
-    <block type="text_print" inline="false">
-      <value name="TEXT">
-        <block type="text">
-          <field name="TEXT">Panic</field>
-        </block>
-      </value>
-    </block>
-  </statement>
-</block>
-</xml>
+// Create connection
+$conn = new mysqli($server, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "INSERT INTO blocks
+VALUES ('1', 'Doe', '23')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?> -->
+
+<?php include 'define_blocks.php';?>
+
 <script>
+// initial
 var workspace = Blockly.inject('blocklyDiv',
     {media: 'media/',
      toolbox: document.getElementById('toolbox')});
@@ -68,20 +58,47 @@ function showCode() {
   document.getElementById("codeViewer").innerHTML = code;
 }
 
+var runCode;
+
 function runCode() {
   // Generate JavaScript code and run it.
   window.LoopTrap = 1000;
   Blockly.JavaScript.INFINITE_LOOP_TRAP =
       'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-  var code = Blockly.JavaScript.workspaceToCode(workspace);
+  runCode = Blockly.JavaScript.workspaceToCode(workspace);
+
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
-    eval(code);
-    // document.getElementById("codeViewer").innerHTML = result;
+    //get user input
+    var userInput = "asd";
+    eval(runCode);
   } catch (e) {
     alert(e);
   }
 }
+
+function sendMessage() {
+  // Generate JavaScript code and run it.
+  window.LoopTrap = 1000;
+  Blockly.JavaScript.INFINITE_LOOP_TRAP =
+      'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+  runCode = Blockly.JavaScript.workspaceToCode(workspace);
+
+  Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+  try {
+    //get user input
+    var userInput = document.getElementById('user_input').value;
+    eval(runCode);
+  } catch (e) {
+    alert(e);
+  }
+}
+
+function saveXml() {
+ var xml = Blockly.Xml.workspaceToDom(workspace);
+ console.log(xml);
+}
+
 </script>
 
 <?php include 'footer.php';?>
