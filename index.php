@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="chat-input">
-            <textarea id="chatbox-user-input" placeholder="Please type your input."></textarea>
+            <textarea id="chatbox-user-input" onkeydown="pressed(event)" placeholder="Please type your input."></textarea>
             <button onclick="sendMsg()">SEND</button>
           </div>
         </div>
@@ -98,6 +98,8 @@
   function sendMsg(){
     /*Start of User Input*/
     var userInput = document.getElementById('chatbox-user-input').value;
+    document.getElementById('chatbox-user-input').value = "";
+
     var userdiv = document.createElement("div");
     userdiv.setAttribute("class", "content customer");
 
@@ -116,7 +118,6 @@
     document.getElementsByClassName("chatcontent")[0].lastElementChild.getElementsByClassName("user-photo")[0].appendChild(userimg);
     document.getElementsByClassName("chatcontent")[0].lastElementChild.appendChild(userp);
     var contentbox = document.getElementsByClassName("chatcontent")[0];
-    document.getElementById('chatbox-user-input').value = "";
     contentbox.scrollTop = contentbox.scrollHeight;
     /*End of User Input*/
 
@@ -145,6 +146,13 @@
     document.getElementsByClassName("chatcontent")[0].lastElementChild.appendChild(botp);
     var contentbox = document.getElementsByClassName("chatcontent")[0];
     contentbox.scrollTop = contentbox.scrollHeight;
+  }
+  function pressed(e) {
+    if (e.keyCode == 13 && !e.shiftKey) {
+        sendMsg();
+        // prevent default behavior
+        e.preventDefault();
+    }
   }
 </script>
 
