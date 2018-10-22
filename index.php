@@ -11,12 +11,11 @@
   <div class="row">
     <div class="col-sm-8">
         <div id="blocklyDiv" style="height:500px;width:100%;"></div>
-        <p id="codeViewer"></p>
         </br>
         <button onclick="saveXml()">Save</button>
         <button onclick="resetWorkspeace()">Reset</button>
         <button onclick="showCode()">Show JavaScript</button>
-        <div id="bot_reply"></div>
+        <p id="codeViewer"></p>
     </div>
     <div class="col-sm-4">
         <div class="chatbox">
