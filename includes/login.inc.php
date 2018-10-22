@@ -1,4 +1,3 @@
-<!-- Authors: Fred Morsy and Yifan He-->
 <?php
 
 	//First we start a session

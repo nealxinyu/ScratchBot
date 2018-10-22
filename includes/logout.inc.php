@@ -1,4 +1,3 @@
-<!-- Authors: Fred Morsy and Yifan He-->
 <?php
 	// When the user clicks the logout button
 	if (isset($_POST['submit'])) {

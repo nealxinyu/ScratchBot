@@ -33,8 +33,10 @@ Blockly.Blocks['send_back'] = {
 
 Blockly.JavaScript['send_back'] = function(block) {
   var value_send_back = Blockly.JavaScript.valueToCode(block, 'send_back', Blockly.JavaScript.ORDER_ATOMIC);
+  value_send_back = value_send_back.replace(/\'/g, "");
   // TODO: Assemble JavaScript into code variable.
-  var code = 'alert('+value_send_back+');\n';
+  //var code = 'alert('+value_send_back+');\n';
+  var code = 'botReply("'+value_send_back+'");\n';
   return code;
 };
 
@@ -42,13 +44,13 @@ Blockly.JavaScript['send_back'] = function(block) {
 
 <!-- define blocks -->
 <xml id="toolbox" style="display:none">
+    <block type="user_input"></block>
+    <block type="send_back"></block>
+    <block type="text">
+      <field name="TEXT"></field>
+    </block>
     <block type="controls_if"></block>
     <block type="logic_compare"></block>
-  <block type="text">
-    <field name="TEXT"></field>
-  </block>
-  <block type="user_input"></block>
-  <block type="send_back"></block>
 </xml>
 
 <!-- default blocks -->

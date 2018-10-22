@@ -1,4 +1,3 @@
-<!-- Authors: Fred Morsy and Yifan He-->
 <?php
 	//We then check if the user has clicked the signup button
 	if (isset($_POST['submit'])) {
@@ -26,7 +25,7 @@
 			} else {
 				//Check if email is valid
 				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-					header("Location: ../signup.php?signup=email");
+					header("Location: ../signup.php?signup=invalid-email");
 					exit();
 				} else {
 					//Check if username exists USING PREPARED STATEMENTS
@@ -70,7 +69,7 @@
 
 								//Run query in database
 								mysqli_stmt_execute($stmt2);
-								header("Location: ../signup.php?signup=success");
+								header("Location: ../login.php?signup=success");
 								exit();
 							}
 						}
