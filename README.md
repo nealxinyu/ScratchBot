@@ -1,0 +1,5 @@
+# ScratchBot
+-----------------------
+> This is a Chat bot tool that allows restaurant owner to create their own online auto-reply bot to 
+> fill the function of dealing with the online orders.
+
