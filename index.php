@@ -94,7 +94,6 @@
 </script>
 
 <script>
-
   function sendMsg(){
     /*Start of User Input*/
     var userInput = document.getElementById('chatbox-user-input').value;
