@@ -10,15 +10,16 @@
 		return $string;
 	}
 	if (isset($_POST["submit"])) {
+		include_once 'dbh.inc.php';
 		$name = clean_text($_POST["dishName"]);
 		$price = clean_text($_POST["dishPrice"]);
 	}
-	$file_open = fopen("menu_data.csv", "a+");
-	$num_rows = count(file("menu_data.csv")); //count the rows of file returned
+	$file_open = fopen("menudata.csv", "a+");
+	$num_rows = count(file("menudata.csv")); //count the rows of file returned
 	if ($num_rows > 1) {
 		$nums_rows = ($num_rows - 1) + 1;
 	}
-	$form_data = array("Number" => $num_rows, "Name" => $name, "Price" => $price); //store info as array in csv file
+	$form_data = array("Number" => $num_rows, "Name" => $name, "Price" => $price); //store info as an array in csv file
 	fputcsv($file_open, $form_data);
 	$name = ''; //after submit the name, clear the name;
 	$price = '';
