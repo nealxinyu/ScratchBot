@@ -1,0 +1,45 @@
+<?php
+	include_once 'header.php';
+?>
+
+<style>
+	<?php include 'css/menu.css'; ?>
+</style>
+	
+<?php
+
+
+  $server = "db4free.net";
+  $username = "scratchbot";
+  $password = "qaz123wsx";
+  $dbname = "scratchbot";
+
+  // Create connection
+  $conn = new mysqli($server, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT menu FROM menudata WHERE user_id=".$_SESSION['u_id'];
+  $result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo $row["menu"] . "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+  $conn->close();
+
+
+?>
+
+
+<?php
+	include_once 'footer.php';
+?>
