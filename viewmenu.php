@@ -38,12 +38,16 @@ if ($result->num_rows > 0) {
       //var_dump($res);
       //$character = json_decode($row["menu"]);
       //echo $character->name;
-      foreach ($result_decode as $key => $value) {
-        echo $value["name"] . "," . $value["price"] . "<br>";
-      }
-    }
-} else {
-    echo "0 results";
+      if (!empty($result_decode)) {
+            foreach ($result_decode as $key => $value) {
+            echo $value["name"] . "," . $value["price"] . "<br>";
+        }
+      } 
+  }
+} else {            //No menu for corresponding user
+    
+    echo "<h2>Oops, looks like don't have a menu...</h2>";
+    echo "<h2>Click here to type a menu <a href=\"uploadmenu.php\">Click Here<br></a></h2>";
 }
 
   $conn->close();
