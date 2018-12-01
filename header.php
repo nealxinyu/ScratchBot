@@ -27,7 +27,7 @@
                     //If the user is logged in
                     if (isset($_SESSION['u_id'])) {
                         echo '
-                        <li><a href="user.php">'.$_SESSION['u_uid'].'</a></li>
+                        <li><a href="user.php">'. "Name: " .$_SESSION['u_uid']. ", ". "ID: " . $_SESSION['u_id'].'</a></li>
                         <li>
                             <form action="includes/logout.inc.php" method="POST">
                                 <button type="submit" name="submit" class="btn btn-outline-danger" style="margin-top: 8px;">Logout</button>
