@@ -15,20 +15,17 @@ if (isset($_SESSION['u_id'])) {
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "INSERT INTO menu
-    (`user_id`, `menu`)
-  VALUES
-    (".$_SESSION['u_id'].", `".$_POST['menuContent']."`)
-  ON duplicate KEY UPDATE
-    `menu` = VALUES(`menu`);"
-
-
+  $sql = "SELECT `restaurantName`,`restaurantPhone`,`restaurantAddress` FROM `users` WHERE user_id=".$_SESSION['u_id'];
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
-          echo $row["menu"];
+          echo $row["restaurantName"];
+          echo ",";
+          echo $row["restaurantPhone"];
+          echo ",";
+          echo $row["restaurantAddress"];
       }
   } else {
       echo "0 results";

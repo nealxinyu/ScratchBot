@@ -45,7 +45,6 @@
   var orderPhone;
   var orderEmail;
 
-
   var totalStep = 0;
   var currentStep = 0;
   var exitStep = -1;
@@ -112,6 +111,10 @@
 <script>
   var jsonmenu;
   var fullmenu = "";
+
+  var restaurantName;
+  var restaurantPhone;
+  var restaurantAddress;
 
   function sendMsg(){
     /*Start of User Input*/
@@ -185,43 +188,6 @@
     return false;
   }
 
-  window.onload = function getMenu(){
-    $.ajax({
-    url: "db_get_menu.php",
-    type: "GET",
-    success: function(data) {
-      obj = JSON.parse(data);
-      jsonmenu = JSON.parse(data);
-      for (var i = 0; i < obj.length; i++) {
-          fullmenu += i+1;
-          fullmenu += " : ";
-          fullmenu += obj[i].name;
-          fullmenu += " , ";
-          fullmenu += obj[i].price;
-          fullmenu += "<br>";
-      }
-      console.log(fullmenu);
-    },
-    error: function(){
-      console.log("fail to get menu");
-    }
-   });
-
-    // $.get("db_get_menu.php", function(data){
-    //   obj = JSON.parse(data);
-    //   jsonmenu = JSON.parse(data);
-    //   for (var i = 0; i < obj.length; i++) {
-    //       fullmenu += i+1;
-    //       fullmenu += " : ";
-    //       fullmenu += obj[i].name;
-    //       fullmenu += " , ";
-    //       fullmenu += obj[i].price;
-    //       fullmenu += "<br>";
-    //   }
-    //   console.log(fullmenu);
-    // });
-  }
-
   function sendOrder(){
     orderDetail = "";
     orderDetail += "Type: "+orderType+"<br>";
@@ -262,29 +228,44 @@
     });
   }
 
-    // return $.ajax({
-    //   url: "db_get_menu.php",
-    //   type: "GET",
-    //   success: function(data) {
-    //     var fullmenu = "";
-    //     obj = JSON.parse(data);
-    //     for (var i = 0; i < obj.length; i++) {
-    //         fullmenu += i+1;
-    //         fullmenu += " : ";
-    //         fullmenu += obj[i].name;
-    //         fullmenu += " , ";
-    //         fullmenu += obj[i].price;
-    //         fullmenu += "<br>";
-    //     }
-    //     console.log(fullmenu);
-    //     return fullmenu;
-    //   },
-    //   error: function(){
-    //     return "fail to get menu";
-    //   }
-    // });
+  window.onload = function getMenu(){
+    $.ajax({
+    url: "db_get_menu.php",
+    type: "GET",
+    success: function(data) {
+      obj = JSON.parse(data);
+      jsonmenu = JSON.parse(data);
+      for (var i = 0; i < obj.length; i++) {
+          fullmenu += i+1;
+          fullmenu += " : ";
+          fullmenu += obj[i].name;
+          fullmenu += " , ";
+          fullmenu += obj[i].price;
+          fullmenu += "<br>";
+      }
+      console.log(fullmenu);
+    },
+    error: function(){
+      console.log("fail to get menu");
+    }
+   });
 
+    $.ajax({
+      url: "db_get_restaurant.php",
+      type: "GET",
+      success: function(data) {
+        restaurantName = data.split(",")[0];
+        restaurantPhone = data.split(",")[1];
+        restaurantAddress = data.split(",")[2];
+        console.log(data);
+      },
+      error: function(){
+        console.log("fail to get restaurant info");
+      }
+    });
+  }
+</script>
+<script>
 
 </script>
-
 <?php include 'footer.php';?>
