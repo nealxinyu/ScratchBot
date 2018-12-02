@@ -22,12 +22,12 @@
           <div class="chatcontent">
             <div class="content owner">
               <div class="user-photo"><img src="./chatbox-media/food.png"></div>
-              <p class="message">Welcome. How can I help you today? </p>
+              <p class="message">Welcome!</p>
             </div>
           </div>
           <div class="chat-input">
             <textarea id="chatbox-user-input" onkeydown="pressed(event)" placeholder="Please type your input."></textarea>
-            <button onclick="sendMsg()">SEND</button>
+            <button id="chatbox-send" onclick="sendMsg()">SEND</button>
           </div>
         </div>
     </div>
@@ -37,6 +37,19 @@
 <?php include 'define_blocks.php';?>
 
 <script>
+  // global var
+  var orderName;
+  var orderAddress;
+  var orderFood;
+  var orderType;
+  var orderPhone;
+  var orderEmail;
+
+
+  var totalStep = 0;
+  var currentStep = 0;
+  var exitStep = -1;
+
   // initial
   var workspace = Blockly.inject('blocklyDiv',
       {media: 'media/',
@@ -63,9 +76,12 @@
       //get user input
       var userInput = input;
       eval(runCode);
+      exitStep = -1;
     } catch (e) {
-      alert(e);
+      console.log(e);
     }
+    totalStep = 0;
+    currentStep = 0;
   }
 
   function saveXml() {
@@ -94,6 +110,9 @@
 </script>
 
 <script>
+  var jsonmenu;
+  var fullmenu = "";
+
   function sendMsg(){
     /*Start of User Input*/
     var userInput = document.getElementById('chatbox-user-input').value;
@@ -139,13 +158,17 @@
     botp.setAttribute("class", "message");
     botp.innerHTML = replyMsg;/*INSERT BOT REPLY VALUE HERE!*/
 
-    document.getElementsByClassName("chatcontent")[0].appendChild(botdiv);
-    document.getElementsByClassName("chatcontent")[0].lastElementChild.appendChild(botinnerdiv);
-    document.getElementsByClassName("chatcontent")[0].lastElementChild.getElementsByClassName("user-photo")[0].appendChild(botimg);
-    document.getElementsByClassName("chatcontent")[0].lastElementChild.appendChild(botp);
-    var contentbox = document.getElementsByClassName("chatcontent")[0];
-    contentbox.scrollTop = contentbox.scrollHeight;
+    // delay reply
+    setTimeout(function(){
+      document.getElementsByClassName("chatcontent")[0].appendChild(botdiv);
+      document.getElementsByClassName("chatcontent")[0].lastElementChild.appendChild(botinnerdiv);
+      document.getElementsByClassName("chatcontent")[0].lastElementChild.getElementsByClassName("user-photo")[0].appendChild(botimg);
+      document.getElementsByClassName("chatcontent")[0].lastElementChild.appendChild(botp);
+      var contentbox = document.getElementsByClassName("chatcontent")[0];
+      contentbox.scrollTop = contentbox.scrollHeight;
+    }, 1000);
   }
+
   function pressed(e) {
     if (e.keyCode == 13 && !e.shiftKey) {
         sendMsg();
@@ -153,6 +176,115 @@
         e.preventDefault();
     }
   }
+
+  function isAnswerPositive(answer){
+    return true;
+  }
+
+  function isAnswerNegative(answer){
+    return false;
+  }
+
+  window.onload = function getMenu(){
+    $.ajax({
+    url: "db_get_menu.php",
+    type: "GET",
+    success: function(data) {
+      obj = JSON.parse(data);
+      jsonmenu = JSON.parse(data);
+      for (var i = 0; i < obj.length; i++) {
+          fullmenu += i+1;
+          fullmenu += " : ";
+          fullmenu += obj[i].name;
+          fullmenu += " , ";
+          fullmenu += obj[i].price;
+          fullmenu += "<br>";
+      }
+      console.log(fullmenu);
+    },
+    error: function(){
+      console.log("fail to get menu");
+    }
+   });
+
+    // $.get("db_get_menu.php", function(data){
+    //   obj = JSON.parse(data);
+    //   jsonmenu = JSON.parse(data);
+    //   for (var i = 0; i < obj.length; i++) {
+    //       fullmenu += i+1;
+    //       fullmenu += " : ";
+    //       fullmenu += obj[i].name;
+    //       fullmenu += " , ";
+    //       fullmenu += obj[i].price;
+    //       fullmenu += "<br>";
+    //   }
+    //   console.log(fullmenu);
+    // });
+  }
+
+  function sendOrder(){
+    orderDetail = "";
+    orderDetail += "Type: "+orderType+"<br>";
+    orderDetail += "Food ordered: "+getFoodNameByList(orderFood)+"<br>";
+    orderDetail += "Name: "+orderName+"<br>";
+    orderDetail += "Address: "+orderAddress;
+    botReply(orderDetail);
+  }
+
+  function getFoodNameByList(orderFood){
+    orderFoodList = orderFood.split(",");
+    orderFoodString = "";
+    for (var i = 0; i < orderFoodList.length; i++){
+      if((orderFoodList[i]-1)< jsonmenu.length){
+        orderFoodString += "[";
+        orderFoodString += jsonmenu[orderFoodList[i]-1].name;
+        orderFoodString += "] ";
+      }
+    }
+    return orderFoodString;
+  }
+
+  function saveOrder(){
+    console.log("saving");
+    $.ajax({
+      url: "db_save_order.php",
+      type: "POST",
+      data: {"orderType":orderType,
+             "orderFood":getFoodNameByList(orderFood),
+             "orderName":orderName,
+             "orderPhone":orderPhone,
+             "orderEmail":orderEmail,
+             "orderAddress":orderAddress
+              },
+      success: function(data) {
+          alert("Saved");
+      },
+    });
+  }
+
+    // return $.ajax({
+    //   url: "db_get_menu.php",
+    //   type: "GET",
+    //   success: function(data) {
+    //     var fullmenu = "";
+    //     obj = JSON.parse(data);
+    //     for (var i = 0; i < obj.length; i++) {
+    //         fullmenu += i+1;
+    //         fullmenu += " : ";
+    //         fullmenu += obj[i].name;
+    //         fullmenu += " , ";
+    //         fullmenu += obj[i].price;
+    //         fullmenu += "<br>";
+    //     }
+    //     console.log(fullmenu);
+    //     return fullmenu;
+    //   },
+    //   error: function(){
+    //     return "fail to get menu";
+    //   }
+    // });
+
+
 </script>
 
 <?php include 'footer.php';?>

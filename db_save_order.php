@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['u_id'])) {
-  if(isset($_POST['xml'])) {
+  if(isset($_POST['orderType']) && isset($_POST['orderFood'])) {
     $server = "db4free.net";
     $username = "scratchbot";
     $password = "qaz123wsx";
@@ -16,8 +16,8 @@ if(isset($_SESSION['u_id'])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO blocks (content, uid)
-    VALUES ('".$_POST['xml']."', '".$_SESSION['u_id']."')";
+    $sql = "INSERT INTO `order` (orderPhone, orderEmail, orderFood, orderType, orderName, orderAddress, user_id)
+    VALUES ('".$_POST['orderPhone']."','".$_POST['orderEmail']."','".$_POST['orderFood']."','".$_POST['orderType']."','".$_POST['orderName']."','".$_POST['orderAddress']."','".$_SESSION['u_id']."')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
@@ -28,5 +28,4 @@ if(isset($_SESSION['u_id'])) {
     $conn->close();
   }
 }
-
 ?>
