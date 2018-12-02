@@ -15,7 +15,14 @@ if (isset($_SESSION['u_id'])) {
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT menu FROM `menudata` WHERE user_id=".$_SESSION['u_id'];
+  $sql = "INSERT INTO menu
+    (`user_id`, `menu`)
+  VALUES
+    (".$_SESSION['u_id'].", `".$_POST['menuContent']."`)
+  ON duplicate KEY UPDATE
+    `menu` = VALUES(`menu`);"
+
+
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {

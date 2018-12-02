@@ -16,6 +16,7 @@ if (isset($_SESSION['u_id'])) {
   }
 
   $sql = "UPDATE `users` SET `user_first`='".$_POST['user_first']."',`user_last`='".$_POST['user_last']."',`user_email`='".$_POST['user_email']."',`restaurantName`='".$_POST['restaurantName']."',`restaurantPhone`='".$_POST['restaurantPhone']."',`restaurantAddress`='".$_POST['restaurantAddress']."' WHERE user_id=".$_SESSION['u_id'];
+
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -30,6 +31,4 @@ if (isset($_SESSION['u_id'])) {
 } else {
     echo "please login";
 }
-
-
 ?>
