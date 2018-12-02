@@ -1,5 +1,43 @@
 <?php
+	include_once 'header.php';
+?>
 
-echo 'Here is the chatbot'; 
+<style>
+	<?php include 'css/menu.css'; ?>
+</style>
+	
+<?php
 
+  $server = "db4free.net";
+  $username = "scratchbot";
+  $password = "qaz123wsx";
+  $dbname = "scratchbot";
+
+  // Create connection
+  $conn = new mysqli($server, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT botName, botId FROM blocks WHERE user_id=".$_SESSION['u_id'];
+  $result = $conn->query($sql);
+  
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+	  echo $row['botName'] . " " .$row["botId"];
+  }
+} else {
+    
+    echo "<h2>Oops, looks like don't have a menu...</h2>";
+    echo "<h2>Click here to type a menu <a href=\"uploadmenu.php\">Click Here<br></a></h2>";
+}
+
+  $conn->close();
+?>
+
+<?php
+	include_once 'footer.php';
 ?>
