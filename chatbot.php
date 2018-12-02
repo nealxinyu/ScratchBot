@@ -31,8 +31,8 @@ if ($result->num_rows > 0) {
   }
 } else {
     
-    echo "<h2>Oops, looks like don't have a menu...</h2>";
-    echo "<h2>Click here to type a menu <a href=\"uploadmenu.php\">Click Here<br></a></h2>";
+    echo "<h2>Oops, looks like don't have a Chatbot...</h2>";
+    echo "<h2>Click here to type a create a new Chatbot <a href=\"uploadmenu.php\">Click Here<br></a></h2>";  //php要改
 }
 
   $conn->close();
