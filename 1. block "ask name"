@@ -1,9 +1,0 @@
-block "ask name"
-block "ask address"
-block "ask food you want"
-block "ask order confirm"
-
-block "answer is negative"
-block "answer is positive"
-
-block "send menu"

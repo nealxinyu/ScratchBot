@@ -6,7 +6,24 @@
 	<?php include 'css/menu.css'; ?>
 </style>
 <center>
-  <div class="jumbotron container">
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3 ">
+      <?php
+      // Display a message when the user logs in
+        if (isset($_SESSION['u_id'])) {
+          echo  "<h2>".($_SESSION['u_uid']."</h2>");
+        }
+      ?>
+         <div class="list-group ">
+              <a href="user.php" class="list-group-item list-group-item-action ">Profile</a> 
+
+              <a href="viewmenu.php" class="list-group-item list-group-item-action active">View Menu</a>
+              <a href="uploadmenu.php" class="list-group-item list-group-item-action">Edit Menu</a>
+              <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a> 
+            </div> 
+    </div>
+
     <h3>Menu:</h3>
 
   <?php
@@ -43,7 +60,7 @@
         //echo $character->name;
         if (!empty($result_decode)) {
               foreach ($result_decode as $key => $value) {
-              echo $value["name"] . "," . $value["price"] . "<br>";
+              echo "<h2>" . $value["name"] . "," . $value["price"] . "</h2>" . "<br>";
           }
         } 
     }

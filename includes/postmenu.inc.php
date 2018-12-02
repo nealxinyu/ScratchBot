@@ -33,9 +33,13 @@ $user = mysqli_real_escape_string($connection, $user);
 
 //This should retrive HTML form data and insert into database
 //$query  = "INSERT INTO menudata (menu, user_id) VALUES ('".$_POST["menu"]."','".$_POST["user_id"]."');";
-$query  = "INSERT INTO menudata (menu, user_id) VALUES ('". $jsonString ."','".$_POST["user_id"]."');";
+//$query  = "INSERT INTO menudata (menu, user_id) VALUES ('". $jsonString ."','".$_POST["user_id"]."');";
 //$query = "UPDATE `menudata` SET `menu` = '[{\"name\": \"Peking Duck\",\"price\": \"$26.99\"}, {\"name\": \"Duck\",\"price\": \"$16.99\"}]' WHERE `menudata`.`menu_id` = 25";
 //$query = "UPDATE menudata SET menu = CONCAT($jsonString, $jsonString[0]) WHERE user_id = ".$_POST["user_id"]."";
+//$query = "SELECT JSON_ARRAY_APPEND($jsonString, '$jsonString[0]')"
+
+//选取改user全部数据
+$query = "SELECT * FROM menudata WHERE user_id = '".$_POST["user_id"]."'"; 
         $result = mysqli_query($connection, $query);
         //Test if there was a query error
         if (empty($result)) {
@@ -53,6 +57,7 @@ $query  = "INSERT INTO menudata (menu, user_id) VALUES ('". $jsonString ."','".$
             //    header("Location: /uploadmenu.php");
             //}
             //echo $jsonString;
+            //echo $result;
             header("Location: /viewmenu.php");
             exit;
         } else {
