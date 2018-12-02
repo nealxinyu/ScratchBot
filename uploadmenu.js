@@ -1,10 +1,72 @@
 var i = 0;
-var jsonArr = [];  
+var jsonArr = []; 
+var jsonString; 
 var jsonStrBef = "[";
 var jsonStrAft = "]";
 var jsonFormatt = "";
+var counter = 0;
+
 $(document).ready(function () {
-    var counter = 0;
+    $("#submit").on("click", function () {
+        //var menuString;
+        //var priceString;
+            /*
+            if (i == 0) {
+                //var counter = 0;
+                menuString = document.getElementById("menu"+i.toString()).value;
+                priceString = document.getElementById("price"+i.toString()).value;
+                jsonString = "{\"name\": " + "\"" + menuString + "\"" + "," + "\"price\": " + "\"" + priceString + "\"" + "}";    
+                jsonArr.push(jsonString)
+                jsonStrBef += jsonArr[i];
+                jsonFormatt = jsonStrBef + jsonStrAft;
+                //counter++;
+                i++;
+                } else {
+                    for (i; i < jsonArr.length; i++) {
+                        menuString = document.getElementById("menu"+i.toString()).value;
+                        priceString = document.getElementById("price"+i.toString()).value;
+                        jsonString = "{\"name\": " + "\"" + menuString + "\"" + "," + "\"price\": " + "\"" + priceString + "\"" + "}";    
+                        jsonArr.push(jsonString);
+
+                }
+                */
+        var menuString;
+        var priceString;
+        if (i == 0) {
+            menuString = document.getElementById("menu"+i.toString()).value;
+            priceString = document.getElementById("price"+i.toString()).value;
+            jsonString = "{\"name\": " + "\"" + menuString + "\"" + "," + "\"price\": " + "\"" + priceString + "\"" + "}";
+            jsonArr.push(jsonString);
+            jsonStrBef += jsonArr[i];
+            jsonFormatt = jsonStrBef + jsonStrAft;    
+            i++;
+            //console.log(jsonArr.length);
+        }
+        for (i; i <= counter; i++) {
+            menuString = document.getElementById("menu"+i.toString()).value;
+            priceString = document.getElementById("price"+i.toString()).value;
+            console.log("jsonArr length: " + jsonArr.length);
+            //if (i == 0) {
+            //    jsonString = "{\"name\": " + "\"" + menuString + "\"" + "," + "\"price\": " + "\"" + priceString + "\"" + "}";    
+            //    console.log(jsonString);
+            //} else {
+                jsonString = ", {\"name\": " + "\"" + menuString + "\"" + "," + "\"price\": " + "\"" + priceString + "\"" + "}";    
+
+            //}
+            console.log(i);
+            jsonArr.push(jsonString);
+            jsonStrBef += jsonArr[i];
+            jsonFormatt = jsonStrBef + jsonStrAft;
+            
+
+        }
+        
+        alert("Json format is: " + jsonFormatt);
+    });
+});
+
+$(document).ready(function () {
+    //var counter = 0;
 
     $("#addrow").on("click", function () {
         var menuString = document.getElementById("menu"+counter.toString()).value;
@@ -34,32 +96,31 @@ $(document).ready(function () {
             cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
             newRow.append(cols);
             $("table.order-list").append(newRow);
-            console.log(counter);
+            //console.log(counter);
             //console.log(menuCounter);
             //console.log(priceCounter);
-            var jsonString = "{\"name\": " + "\"" + menuString + "\"" + "," + "\"price\": " + "\"" + priceString + "\"" + "}";    
+            //jsonString = "{\"name\": " + "\"" + menuString + "\"" + "," + "\"price\": " + "\"" + priceString + "\"" + "}";    
             //console.log(jsonString);
 
-            jsonArr.push(jsonString);
+            //jsonArr.push(jsonString);
             //jsonArr.toString();
 
             //console.log(jsonArr); 
             //jsonStrBef = jsonStrBef + jsonArr[0];
-            for (i; i < jsonArr.length; i++) {
-                if (i == 0) {
-                    jsonStrBef += jsonArr[i];
-                    
-                }
-                else {
-                    jsonStrBef += ", " + jsonArr[i];
-                }
+            //for (i; i < jsonArr.length; i++) {
+                
+                
+            //        jsonStrBef += ", " + jsonArr[i];
+                
 
-            }
-            jsonFormatt = jsonStrBef + jsonStrAft;
+            //}
+            //jsonFormatt = jsonStrBef + jsonStrAft;
 
             //console.log("Json: " + jsonFormatt);
             }   
     });
+
+
     /*
     jsonStrBef = jsonStrBef + jsonArr[0];
     for (var i = 1; i < jsonArr.length; i++) {
