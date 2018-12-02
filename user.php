@@ -140,7 +140,7 @@
                               
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
-                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                  <button onclick="getUserInfo()"name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
                                 </div>
                               </div>
                             </form>
@@ -155,3 +155,23 @@
 <?php
 	include_once 'footer.php';
 ?>
+
+<script>
+function getUserInfo() {
+    var firstName = document.getElementById("firstname").value;
+	var lastName = document.getElementById("lastname").value;
+	var email = document.getElementById("email").value;
+	var restaurantName = document.getElementById("restaurantName").value;
+	var restaurantPhone = document.getElementById("restaurantPhone").value;
+	var restaurantAddress = document.getElementById("restaurantAddress").value;
+	
+	
+	console.log(firstName);
+	console.log(lastName);
+	console.log(email);
+	console.log(restaurantName);
+	console.log(restaurantPhone);
+	console.log(restaurantAddress);
+}
+</script>
+
