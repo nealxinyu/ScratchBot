@@ -40,12 +40,15 @@
                 //If the user is logged in
                 if (isset($_SESSION['u_id'])) {
                     echo '
-                        <li><a href="user.php">'.$_SESSION['u_uid'].'</a></li>
-                        <li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="user.php">'.$_SESSION['u_uid'].'</a>
+                        </li>
+                        <li class="nav-item"">
                             <form action="includes/logout.inc.php" method="POST">
                                 <button type="submit" name="submit" class="btn btn-outline-danger" style="margin-top: 8px;">Logout</button>
                             </form>
-                        </li>';
+                        </li>
+                        ';
                 }
                 //If the user is not logged in
                 else {
