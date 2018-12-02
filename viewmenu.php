@@ -5,7 +5,7 @@
 <style>
 	<?php include 'css/menu.css'; ?>
 </style>
-<center>
+
   <div class="container">
   <div class="row">
     <div class="col-md-3 ">
@@ -23,7 +23,8 @@
               <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a> 
             </div> 
     </div>
-
+    <center>
+    <div class="col-md-09">
     <h3>Menu:</h3>
 
   <?php
@@ -74,8 +75,13 @@
 
 
   ?>
-  </div>
 </center>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
 <?php
 	include_once 'footer.php';
 ?>
