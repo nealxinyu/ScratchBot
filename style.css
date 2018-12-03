@@ -12,3 +12,6 @@ body {
 .workspace {
     height:300px;
 }
+.navbar{
+    margin:0px !important;
+}
