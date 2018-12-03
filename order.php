@@ -15,18 +15,19 @@
 				}
 			?>
 		     <div class="list-group ">
-		      <a href="user.php" class="list-group-item list-group-item-action ">Profile</a> 
+		      <a href="user.php" class="list-group-item list-group-item-action ">Profile</a>
 
               <a href="viewmenu.php" class="list-group-item list-group-item-action">View Menu</a>
               <a href="uploadmenu.php" class="list-group-item list-group-item-action">Edit Menu</a>
-              <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a> 
-              <a href="order.php" class="list-group-item list-group-item-action active">Order</a> 
-            </div> 
+              <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a>
+              <a href="order.php" class="list-group-item list-group-item-action active">Order</a>
+              <a type="button" href="/editblocks.php" style="width:100%; margin-top:20px" class="btn btn-success btn-lg">Create your bot !</a>
+            </div>
 		</div>
-			
+
 		<center>
     		<div class="col-md-9">
-    			<h3>Saved Orders:</h3>
+    			<h3>Saved Orders</h3>
     			<table class="table" border="1">
   				<thead>
 				    <tr>
@@ -36,7 +37,7 @@
 				      <th scope="col">OrderFood</th>
 				      <th scope="col">OrderName</th>
 				      <th scope="col">OrderAddress</th>
-				      <th scope="col">OrderEmail</th>				      
+				      <th scope="col">OrderEmail</th>
 				      <th scope="col">OrderPhone</th>
 				      <th scope="col">OrderTime</th>
 				    </tr>
@@ -65,7 +66,7 @@
     	if ($result->num_rows > 0) {
       // output data of each row
     		//echo "here";
-    		/*echo "<center>" . 
+    		/*echo "<center>" .
 		        		"<div class=\"col-md-9\">" .
 		        			"<h3>Saved Orders:</h3>" .
 							    "<table class=\"table\">" .
@@ -90,7 +91,7 @@
 	        //echo $row["menu"] . "<br>";
 	      		//echo ""
 
-	        	echo //"<center>" . 
+	        	echo //"<center>" .
 		        	//	"<div class=\"col-md-9\">" .
 		        	//		"<h3>Saved Orders:</h3>" .
 					//		    "<table class=\"table\">" .
@@ -108,19 +109,19 @@
 					//		    	"</thead>" .
 
 							        "<tbody>" .
-							        	"<tr>" . 
-							        		"<th scope=\"row\">" . $inc . "</th>" . 
-							        			"<td>" . $row["orderId"] . "</td>" . 
+							        	"<tr>" .
+							        		"<th scope=\"row\">" . $inc . "</th>" .
+							        			"<td>" . $row["orderId"] . "</td>" .
 							        			"<td>" . $row["orderType"] . "</td>" .
 							        			"<td>" . $row["orderFood"] . "</td>" .
 							        			"<td>" . $row["orderName"] . "</td>" .
-							        			"<td>" . $row["orderAddress"] . "</td>" . 
-							        			"<td>" . $row["orderPhone"] .  "</td>" . 
-							        			"<td>" . $row["orderEmail"] .  "</td>" . 
-							        			"<td>" . $row["orderTime"] . "</td>" . 
-							       		"</tr>" . 
+							        			"<td>" . $row["orderAddress"] . "</td>" .
+							        			"<td>" . $row["orderPhone"] .  "</td>" .
+							        			"<td>" . $row["orderEmail"] .  "</td>" .
+							        			"<td>" . $row["orderTime"] . "</td>" .
+							       		"</tr>" .
 							        "</tbody>";
-							    
+
 	        $inc += 1;
 	    }
   	} else {
@@ -156,7 +157,7 @@
     	if ($result->num_rows > 0) {
       // output data of each row
     		//echo "here";
-    		/*echo "<center>" . 
+    		/*echo "<center>" .
 		        		"<div class=\"col-md-9\">" .
 		        			"<h3>Saved Orders:</h3>" .
 							    "<table class=\"table\">" .
@@ -180,7 +181,7 @@
 	        //echo $row["menu"] . "<br>";
 	      		//echo ""
 
-	        	/*echo "<center>" . 
+	        	/*echo "<center>" .
 		        		"<div class=\"col-md-9\">" .
 		        			"<h3>Saved Orders:</h3>" .
 							    "<table class=\"table\">" .
@@ -197,21 +198,21 @@
 							    		"</tr>".
 							    	"</thead>" .
 							        "<tbody>" .
-							        	"<tr>" . 
-							        		"<th scope=\"row\">" . $inc . "</th>" . 
-							        			"<td>" . $row["orderId"] . "</td>" . 
-							        			"<td>" . $row["orderType"] . "</td>" . 
+							        	"<tr>" .
+							        		"<th scope=\"row\">" . $inc . "</th>" .
+							        			"<td>" . $row["orderId"] . "</td>" .
+							        			"<td>" . $row["orderType"] . "</td>" .
 							        			"<td>" . $row["orderName"] . "</td>" .
-							        			"<td>" . $row["orderAddress"] . "</td>" . 
-							        			"<td>" . $row["orderPhone"] .  "</td>" . 
-							        			"<td>" . $row["orderEmail"] .  "</td>" . 
-							        			"<td>" . $row["orderTime"] . "</td>" . 
-							       		"</tr>" . 
-							        "</tbody>" . 
-							    "</table>" . 
-		        			"</div>" . 
-	        			"</center>"; 
-	        
+							        			"<td>" . $row["orderAddress"] . "</td>" .
+							        			"<td>" . $row["orderPhone"] .  "</td>" .
+							        			"<td>" . $row["orderEmail"] .  "</td>" .
+							        			"<td>" . $row["orderTime"] . "</td>" .
+							       		"</tr>" .
+							        "</tbody>" .
+							    "</table>" .
+		        			"</div>" .
+	        			"</center>";
+
 	    }
   	} else {
   		echo "else here";

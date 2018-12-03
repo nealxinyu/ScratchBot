@@ -20,14 +20,16 @@ if (isset($_GET['botId'])) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
           $xml = $row["content"];
+          $xml = substr($xml,0,5)."id=\"startBlocks\" style=\"display: none\"".substr($xml,5);
+          echo $xml;
           $user_id = $row["user_id"];
       }
   } else {
-      echo "0 results";
+      header("Location: /");
   }
   $conn->close();
 } else {
-    echo "please post";
+    header("Location: /");
 }
 ?>
 <!DOCTYPE html>

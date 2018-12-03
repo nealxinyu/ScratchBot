@@ -1,5 +1,41 @@
 <?php include 'header.php';?>
+<?php
+if (isset($_GET['botId'])) {
+  $server = "db4free.net";
+  $username = "scratchbot";
+  $password = "qaz123wsx";
+  $dbname = "scratchbot";
 
+  // Create connection
+  $conn = new mysqli($server, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT content, user_id FROM `blocks` WHERE botId=".$_GET['botId'];
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+          $xml = $row["content"];
+          $xml = substr($xml,0,5)."id=\"startBlocks\" style=\"display: none\"".substr($xml,5);
+          echo $xml;
+          $user_id = $row["user_id"];
+      }
+  } else {
+    $user_id = -1;
+  }
+  if($user_id == -1){
+    echo "ik";
+  }else{
+    echo "work";
+  }
+  $conn->close();
+} else {}
+?>
 <script src="blockly/blockly_compressed.js"></script>
 <script src="blockly/blocks_compressed.js"></script>
 <script src="blockly/msg/js/en.js"></script>
@@ -92,9 +128,11 @@
     $.ajax({
       url: "db_save_xml.php",
       type: "POST",
-      data: ({"xml":xmlText}),
+      data: {"xml":xmlText,
+            "botName":"botName"},
       success: function(data) {
           alert("Saved");
+          window.location.href = "/chatbot.php";
       },
     });
     //   Show to homepage

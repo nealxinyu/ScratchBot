@@ -24,7 +24,7 @@
               <a href="uploadmenu.php" class="list-group-item list-group-item-action active">Edit Menu</a>
               <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a>
               <a href="order.php" class="list-group-item list-group-item-action">Order</a>
-
+              <a type="button" href="/editblocks.php" style="width:100%; margin-top:20px" class="btn btn-success btn-lg">Create your bot !</a>
             </div>
 		</div>
 		<div class="col-md-9">

@@ -367,6 +367,3 @@ Blockly.JavaScript['restaurantAddress'] = function(block) {
     <block type="send_menu"></block>
     <block type="save_order"></block>
 </xml>
-
-<!-- default blocks -->
-<xml id="startBlocks" style="display: none"><block type="say" id="$`ZnWVgoJ%Wrag/K5y59" x="98" y="20"><field name="content">Hello, welcome to my restaurant.</field><next><block type="ask" id="FsU8q20$keq27F6R^;Df"><field name="content">How are you?</field><next><block type="send_menu" id="GCz-DL|5a9WOv@+/)0c9"><next><block type="ask_order" id="hlZN_@kS:V{)gJbr6Re%"><next><block type="ask_name" id="PvneV[XQq4u*vjn)?z3."><next><block type="ask_address" id="rGE1eEl38~O2Hs2S02rO"><next><block type="ask_type" id=";]~kb?{:jTl5TWaR|sfQ"><next><block type="save_order" id=":Bn/2F@nZyV-EHy%[wGq"></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>

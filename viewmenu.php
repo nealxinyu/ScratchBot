@@ -16,14 +16,14 @@
         }
       ?>
          <div class="list-group ">
-              <a href="user.php" class="list-group-item list-group-item-action ">Profile</a> 
+              <a href="user.php" class="list-group-item list-group-item-action ">Profile</a>
 
               <a href="viewmenu.php" class="list-group-item list-group-item-action active">View Menu</a>
               <a href="uploadmenu.php" class="list-group-item list-group-item-action">Edit Menu</a>
               <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a>
-              <a href="order.php" class="list-group-item list-group-item-action">Order</a> 
- 
-            </div> 
+              <a href="order.php" class="list-group-item list-group-item-action">Order</a>
+              <a type="button" href="/editblocks.php" style="width:100%; margin-top:20px" class="btn btn-success btn-lg">Create your bot !</a>
+            </div>
     </div>
     <center>
     <div class="col-md-09">
@@ -65,10 +65,10 @@
               foreach ($result_decode as $key => $value) {
               echo "<h2>" . $value["name"] . "," . $value["price"] . "</h2>" . "<br>";
           }
-        } 
+        }
     }
   } else {            //No menu for corresponding user
-      
+
       echo "<h2>Oops, looks like don't have a menu...</h2>";
       echo "<h2>Click here to type a menu <a href=\"uploadmenu.php\">Click Here<br></a></h2>";
   }

@@ -57,18 +57,12 @@
               <a href="uploadmenu.php" class="list-group-item list-group-item-action">Edit Menu</a>
               <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a>
               <a href="order.php" class="list-group-item list-group-item-action">Order</a>
-
+              <a type="button" href="/editblocks.php" style="width:100%; margin-top:20px" class="btn btn-success btn-lg">Create your bot !</a>
             </div>
 		</div>
 		<div class="col-md-9">
 		    <div class="card">
 		        <div class="card-body">
-		            <div class="row">
-		                <div class="col-md-12">
-		                    <h4>Your Profile</h4>
-		                    <hr>
-		                </div>
-		            </div>
 		            <div class="row">
 		                <div class="col-md-12">
 		                    <form>
@@ -79,7 +73,7 @@
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">First Name: </label>
+                                <label for="name" class="col-4 col-form-label">First Name</label>
                                 <div class="col-8">
 
 								<input id="firstname" name="firstname" placeholder= "<?php echo $userFirst?>" class="form-control here" type="text" value="<?php echo $userFirst?>">
