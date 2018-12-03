@@ -1,4 +1,45 @@
-<?php include 'header.php';?>
+<?php
+if (isset($_GET['botId'])) {
+  $server = "db4free.net";
+  $username = "scratchbot";
+  $password = "qaz123wsx";
+  $dbname = "scratchbot";
+
+  // Create connection
+  $conn = new mysqli($server, $username, $password, $dbname);
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $sql = "SELECT content, user_id FROM `blocks` WHERE botId=".$_GET['botId'];
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+          $xml = $row["content"];
+          $user_id = $row["user_id"];
+      }
+  } else {
+      echo "0 results";
+  }
+  $conn->close();
+} else {
+    echo "please post";
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScratchBot</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
 
 <script src="blockly/blockly_compressed.js"></script>
 <script src="blockly/blocks_compressed.js"></script>
@@ -7,30 +48,36 @@
 
 <link rel="stylesheet" type="text/css" href="chatbox-media/chatbox_style.css">
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8">
-        <div id="blocklyDiv" style="height:500px;width:100%;"></div>
-        </br>
-        <button onclick="saveXml()">Save</button>
-        <button onclick="resetWorkspeace()">Reset</button>
-        <button onclick="showCode()">Show JavaScript</button>
-        <p id="codeViewer"></p>
+<div class="col-sm-8" style="display:none;">
+    <div id="blocklyDiv" style="height:500px;width:100%;"></div>
+    </br>
+    <button onclick="saveXml()">Save</button>
+    <button onclick="resetWorkspeace()">Reset</button>
+    <button onclick="showCode()">Show JavaScript</button>
+    <p id="codeViewer"></p>
+</div>
+<style type="text/css">
+  .chatbox{
+    width: 400px;
+    min-width: 400px;
+    max-width: 400px;
+    height: 530px;
+    min-height: 530px;
+    max-height: 530px;
+    margin: auto;
+  }
+</style>
+
+<div class="chatbox">
+  <div class="chatcontent">
+    <div class="content owner">
+      <div class="user-photo"><img src="./chatbox-media/food.png"></div>
+      <p class="message">Welcome!</p>
     </div>
-    <div class="col-sm-4">
-        <div class="chatbox">
-          <div class="chatcontent">
-            <div class="content owner">
-              <div class="user-photo"><img src="./chatbox-media/food.png"></div>
-              <p class="message">Welcome!</p>
-            </div>
-          </div>
-          <div class="chat-input">
-            <textarea id="chatbox-user-input" onkeydown="pressed(event)" placeholder="Please type your input."></textarea>
-            <button id="chatbox-send" onclick="sendMsg()">SEND</button>
-          </div>
-        </div>
-    </div>
+  </div>
+  <div class="chat-input">
+    <textarea id="chatbox-user-input" onkeydown="pressed(event)" placeholder="Please type your input."></textarea>
+    <button id="chatbox-send" onclick="sendMsg()">SEND</button>
   </div>
 </div>
 
@@ -232,7 +279,7 @@
     $.ajax({
     url: "db_get_menu.php",
     type: "POST",
-    data: {"user_id":<?php echo $_SESSION['u_id'] ?>},
+    data: {"user_id":<?php echo $user_id ?>},
     success: function(data) {
       obj = JSON.parse(data);
       jsonmenu = JSON.parse(data);
@@ -247,14 +294,14 @@
       console.log(fullmenu);
     },
     error: function(){
-      console.log("fail to get menu");
+      alert("fail to get menu");
     }
    });
 
     $.ajax({
       url: "db_get_restaurant.php",
       type: "POST",
-      data: {"user_id":<?php echo $_SESSION['u_id'] ?>},
+      data: {"user_id":<?php echo $user_id ?>},
       success: function(data) {
         restaurantName = data.split(",")[0];
         restaurantPhone = data.split(",")[1];
@@ -262,7 +309,7 @@
         console.log(data);
       },
       error: function(){
-        console.log("fail to get restaurant info");
+        alert("fail to get restaurant info");
       }
     });
   }

@@ -1,7 +1,6 @@
 <?php
-session_start();
 
-if (isset($_SESSION['u_id'])) {
+if (isset($_POST['user_id'])) {
   $server = "db4free.net";
   $username = "scratchbot";
   $password = "qaz123wsx";
@@ -15,7 +14,7 @@ if (isset($_SESSION['u_id'])) {
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT `restaurantName`,`restaurantPhone`,`restaurantAddress` FROM `users` WHERE user_id=".$_SESSION['u_id'];
+  $sql = "SELECT `restaurantName`,`restaurantPhone`,`restaurantAddress` FROM `users` WHERE user_id=".$_POST['user_id'];
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -34,6 +33,5 @@ if (isset($_SESSION['u_id'])) {
 } else {
     echo "please login";
 }
-
 
 ?>

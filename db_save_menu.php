@@ -14,12 +14,11 @@ if(isset($_POST['menu'])) {
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "INSERT INTO blocks (content, uid)
-  VALUES ('".$_POST['xml']."', '23')";
-  $query = "IF EXISTS (SELECT * FROM menudata WHERE user_id = ".$_POST["user_id"]."')"
+  $sql = "INSERT INTO `menudata` (content, uid)
+    VALUES ('".$_POST['menu']."', '".$_SESSION['u_id']."')";
 
   if ($conn->query($sql) === TRUE) {
-      echo "New menu created successfully";
+      echo "New record created successfully";
   } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
   }
