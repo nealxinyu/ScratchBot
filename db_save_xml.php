@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['u_id'])) {
-  if(isset($_POST['xml'])) {
+  if(isset($_POST['menu'])) {
     $server = "db4free.net";
     $username = "scratchbot";
     $password = "qaz123wsx";
@@ -16,8 +16,10 @@ if(isset($_SESSION['u_id'])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO blocks (content, uid)
-    VALUES ('".$_POST['xml']."', '".$_SESSION['u_id']."')";
+    $sql = "INSERT INTO `menudata` (menu, user_id)
+    VALUES ('".$_POST['menu']."',".$_SESSION['u_id'].")
+    ON DUPLICATE KEY UPDATE
+    menu = '".$_POST['menu']."';";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";

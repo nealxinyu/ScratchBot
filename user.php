@@ -117,7 +117,7 @@
 
                               <div class="form-group row">
                                 <div class="offset-4 col-8">
-                                  <button onclick="updateUserInfo()"name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                  <button onclick="updateUserInfo()" name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
                                 </div>
                               </div>
                             </form>
@@ -153,6 +153,7 @@ function updateUserInfo() {
            "restaurantAddress":restaurantAddress
             },
     success: function(data) {
+        alert("Saved");
         document.location.reload();
     },
     error: function(){
