@@ -143,6 +143,16 @@
     </div>
 </section>
 
+<footer id="footer">
+    <div class="container">
+        <ul class="copyright">
+            <li>&copy; ScratchBot</li>
+            <li>Intro to Software Engineering team</li>
+            <li>GitHub: <a href="https://github.com/uiowa-cs-5800-0001-fall-2018/Scratch-Bot">ScratchBot</a></li>
+        </ul>
+    </div>
+</footer>
+
 
 
 <!-- Scripts -->
