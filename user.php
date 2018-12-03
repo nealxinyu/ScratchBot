@@ -56,6 +56,8 @@
               <a href="viewmenu.php" class="list-group-item list-group-item-action">View Menu</a>
               <a href="uploadmenu.php" class="list-group-item list-group-item-action">Edit Menu</a>
               <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a>
+              <a href="order.php" class="list-group-item list-group-item-action">Order</a>
+
             </div>
 		</div>
 		<div class="col-md-9">
@@ -162,4 +164,3 @@ function updateUserInfo() {
   });
 }
 </script>
-

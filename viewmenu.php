@@ -20,7 +20,9 @@
 
               <a href="viewmenu.php" class="list-group-item list-group-item-action active">View Menu</a>
               <a href="uploadmenu.php" class="list-group-item list-group-item-action">Edit Menu</a>
-              <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a> 
+              <a href="chatbot.php" class="list-group-item list-group-item-action">Saved ChatBot</a>
+              <a href="order.php" class="list-group-item list-group-item-action">Order</a> 
+ 
             </div> 
     </div>
     <center>
