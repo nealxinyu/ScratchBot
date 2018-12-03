@@ -16,7 +16,7 @@
     <h2>ScratchBot</h2>
     <p>Next generation chat-bot generator <br /> For resaurant owner!</p>
     <ul class="actions">
-        <li><a href="#" class="button special big">Get Started</a></li>
+        <li><a href="editblocks.php" class="button special big">Get Started</a></li>
     </ul>
 </section>
 

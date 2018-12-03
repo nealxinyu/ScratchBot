@@ -52,13 +52,23 @@
         <div class="row 150%">
             <div class="12u 12u$(xsmall)">
                 <div class="image fit captioned">
-                    <img src="images/pic02.jpg" alt="" />
+                    <img src="images/group.jpg" alt="" />
                     <h3>
-                        Xinyu Chen
+                        Team at work
                     </h3>
                 </div>
             </div>
         </div>
+
+        <div class="container 100%">
+            <div class="row 200%">
+                <h1>
+                    Team member:
+                </h1>
+                <p>
+                    Xinyu Chen, Fred Morsy, Yifan He, Xiaoyu Xing, Zixu Wang, Jianwei Hu
+                </p>
+            </div>
         </div>
     </div>
 </section>

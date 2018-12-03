@@ -24,8 +24,7 @@
             <div class="row 150%">
                 <div class="12u 12u$(xsmall)">
                     <div class="image fit captioned">
-                        <img src="images/agile.png" alt="" />
-                        <h3></h3>
+                        <img src="images/tutorial.png" alt="" />
                     </div>
                 </div>
             </div>
@@ -33,10 +32,10 @@
         <div class="container 75%">
             <div class="row 200%">
                 <p>
-                    Toggle the operation you want on the left to the workspace and put in the sequence you like. The resulting scratch bot will appear on your right.
+                    Toggle the function block you want on the left to the workspace and put in the sequence you like. The resulting ScratchBot will appear on your right.
                 </p>
                 <p>
-                    You can save the scratch bot on our server. A web address will be given to you which provides the scratch bot services.
+                    You can save the ScratchBot on our server. A web address will be given to you which provides the scratch bot services.
                 </p>
             </div>
         </div>
